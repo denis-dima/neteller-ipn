@@ -28,7 +28,7 @@
 <body>
 <!--Production: https://api.neteller.com-->
 <form action="https://test.api.neteller.com/oauth2/v1/token" method="post">
-    <input type="hidden" name="grant_type" value="<?php SECURE_ID ?>">
+    <input type="hidden" name="grant_type" value="450426945078:<?php echo SECURE_ID ?>">
 <!--    <input type="hidden" name="transaction_id" value="--><?php //echo rand(1, 999) ?><!--">-->
 <!--    <input type="hidden" name="return_url" value="http://example.com/finish-url/">-->
 <!--    <input type="hidden" name="cancel_url" value="http://example.com/cancel-url/">-->
