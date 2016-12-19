@@ -8,6 +8,33 @@
  * All rights and copyrights are owned by Sevio Solutions®
  */
 
+
+$denisId = '450426945078';
+$denisSecret = '264564';
+
+$clientID = "454651018446";
+$clientSecret = "270955";
+$clientPassword = "NTt3st1!";
+$clientEmail = "netellertest_USD@neteller.com";
+
+$testing = base64_encode($clientID.":".$clientSecret);
+
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_POST, 1);
+curl_setopt($curl, CURLOPT_URL, "https://test.api.neteller.com/v1/oauth2/token?grant_type=client_credentials");
+curl_setopt($curl, CURLOPT_USERPWD, base64_encode($clientID.":".$clientSecret));
+curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Cache-Control:no-cache"));
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query(array("scope"=>"default")));
+curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$serverOutput = curl_exec($curl);
+
+echo $serverOutput;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +54,11 @@
 </head>
 
 <body>
+
+
 <!--Production: https://api.neteller.com-->
 <form action="https://test.api.neteller.com/v1/oauth2/token" method="POST">
-    <input type="hidden" name="grant_type" value="450426945078481496">
+    <input type="hidden" name="grant_type" value="<?php echo base64_encode($clientID . ":" . $clientSecret)?>">
 <!--    <input type="hidden" name="transaction_id" value="--><?php //echo rand(1, 999) ?><!--">-->
 <!--    <input type="hidden" name="return_url" value="http://example.com/finish-url/">-->
 <!--    <input type="hidden" name="cancel_url" value="http://example.com/cancel-url/">-->
